@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="newStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>	
+</head>
+<body>
+	<div class="container">
+		<section class="header">
+			<header>
+				<h1 style="z-index:999">MovieFlix</h1>
+				<button id="signOut">Sign Out</button>
+			</header>
+		</section>
+		<section class="filter">
+			<div class="filterContent">
+				<button id="viewAllBtn" data-url = "AllMoviesTV"  class="sortBtn">View All Content</button>
+				<button id="viewMoviesBtn" data-url = "AllMovies" class="sortBtn">View All Movies</button>
+				<button id="viewSeriesBtn" data-url = "AllTV" class="sortBtn">View All Series</button>
+				<button id="viewCommentsBtn" data-url = "AllComments" class="sortcommnet">View All Comments</button>
+				<button id="createBtn">Add New</button>
+				<button id="updateBtn" >Update a Entry</button>
+				<button id="deleteBtn" >Delete a Entry</button>
+
+
+				<select id ="sortBy">
+					<option disabled selected>Sort By </option>
+					<option value="year">Year</option>
+					<option value="imdbRating">imdb Rating</option>
+					<option value="imdbVotes">imdb Votes</option>
+				</select>
+			</div>
+		</section>
+		<section class="view">
+			<div class="viewContent">
+				
+			</div>
+		</section>
+		<div  style="display:none" class="overlay">
+		<div id="overlay_form">
+			<h2> Comment Here..</h2>
+			<label>Movie Title: </label><input type="text" id="movietitle" /><br /><br />
+			<label>Type Your Comment:</label>
+			<textarea rows="7" cols="65" id ="commentcreated"></textarea>
+
+			<input type="button" value="Post" id ="post" />
+			<button id="close">Close</button>  
+		</div>
+		</div>
+
+
+			
+			<div  style="display:none" class="overlay_delete">
+		<div id="overlay_form_delete">
+			<h2> Delete Entry</h2>
+			<label>Movie URL: </label><input type="text" id="movieurl" /><br /><br />
+			<input type="button" value="Delete" id ="deleteEntry" />
+			<button id="deleteclose">Close</button>  
+		</div>
+		</div>
+
+
+		<div  style="display:none" class="overlayViewComment">
+			<div id="viewComments">
+				<h2>All Comments</h2>
+				<button id="closeAllComment">Close</button>  
+			</div>
+		</div>
+
+		<!-- Rating -->	
+		<div  style="display:none" class="overlay1">
+			<div id="overlay_form1">
+				<h2>Enter Your Rating Here..</h2>
+				<label>Movie Title: </label><input type="text" id="movietitle1" /><br /><br />
+				<label>Enter Your Rating:  </label>
+				<textarea rows="7" cols="65" id ="RateEntered">Please give Ratings Out of 5..
+				</textarea>
+
+				<input type="button" value="Post" id ="rate" />
+				<button id="close1">Close</button>  
+
+				
+			</div>
+		</div>
+
+		<div class="overlayTable">
+			<table   class="createParent"  id="createForm">
+				<tr  class = "createfield">
+					<td><label> Movie Title: <input type="text" id="ctitle" ></label></td>
+					<td><label> Movie Year: <input type="text" id="cyear" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Rated: <input type="text" id="crated" ></label></td>
+					<td><label> Movie Released: <input type="text" id="creleased" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Runtime: <input type="text" id="cruntime" ></label></td>
+					<td><label> Movie Genre: <input type="text" id="cgenre" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Directors: <input type="text" id="cdirectors" ></label></td>
+					<td><label> Movie Writers: <input type="text" id="cwriters" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Actors: <input type="text" id="cactors" ></label></td>
+					<td><label> Movie Poster: <input type="text" id="cposters" ></label></td>
+				</tr>
+				<tr class="createfield">
+					<td><label> Movie Language: <input type="text" id="clanguage" ></label></td>
+					<td><label> Movie Country: <input type="text" id="ccountry" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Poster: <input type="text" id="cposters" ></label></td>
+					<td><label> Movie Awards: <input type="text" id="cawards" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie Metascore: <input type="text" id="cmetascore" ></label></td>
+					<td><label> Movie ImdbRating: <input type="text" id="cimdbrating" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td><label> Movie ImdbVotes: <input type="text" id="cimdbvoting" ></label></td>
+					<td><label> Movie ImdbId: <input type="text" id="cimdbid" ></label></td>
+				</tr>
+				<tr class = "createfield">
+					<td>
+						<td><label> Movie Type: <input type="text" id="ctype" ></label></td>
+						<td><input type="button" value="Create" id ="createEntry" /></td>
+						<td><button id="createClose" >Close</button></td>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
+<div>
+	<!--
+
+				//<input type = "text" id=urltext placeholder="Please enter the URL of the move, you want to update"></td>
+
+Update
+-->
+			<table   class="updateForm"  id="overlay_form_update" style="display:none">
+				<td><textarea id ="uUrl" placeholder="Enter the Url of the movie you want to update." style="width:100%"></textarea></td>
+				<tr  class = "updatefield">
+					<td><label> Movie Title: <input type="text" id="utitle" ></label></td>
+					<td><label> Movie Year: <input type="text" id="uyear" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Rated: <input type="text" id="urated" ></label></td>
+					<td><label> Movie Released: <input type="text" id="ureleased" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Runtime: <input type="text" id="uruntime" ></label></td>
+					<td><label> Movie Genre: <input type="text" id="ugenre" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Directors: <input type="text" id="udirectors" ></label></td>
+					<td><label> Movie Writers: <input type="text" id="uwriters" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Actors: <input type="text" id="uactors" ></label></td>
+					<td><label> Movie Poster: <input type="text" id="uposters" ></label></td>
+				</tr>
+				<tr class="updatefield">
+					<td><label> Movie Language: <input type="text" id="ulanguage" ></label></td>
+					<td><label> Movie Country: <input type="text" id="ucountry" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Poster: <input type="text" id="uposters" ></label></td>
+					<td><label> Movie Awards: <input type="text" id="uawards" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie Metascore: <input type="text" id="umetascore" ></label></td>
+					<td><label> Movie ImdbRating: <input type="text" id="uimdbrating" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+					<td><label> Movie ImdbVotes: <input type="text" id="uimdbvoting" ></label></td>
+					<td><label> Movie ImdbId: <input type="text" id="uimdbid" ></label></td>
+				</tr>
+				<tr class = "updatefield">
+						<td><label> Movie Type: <input type="text" id="utype" ></label></td>
+						<td></td>
+				</tr>
+				<tr>
+						<td><input type="button" value="Update" id ="updateEntry" />
+						<button id="updateClose" >Close</button></td>
+				</tr>
+
+</table>
+
+
+
+</div>
+
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			//get current user
+			var currentUserId = window.location.href.split('?')[1];
+			
+			console.log(currentUserId);
+
+
+			var objectArray;
+			var getAllContent;
+			//content generation code
+			function htmlcode(arrcode,k){
+				return "<div class='viewMoreDiv'><img src="+arrcode[k].poster+"><h4>Title: <span>"+arrcode[k].title+"</span></h4><h4>Year: <span>"+arrcode[k].year+"</span></h4><h4>Rated: <span>"+arrcode[k].rated+"</span></h4><h4>Released: <span>"+arrcode[k].released+"</span></h4><h4>Run Time: <span>"+arrcode[k].runtime+"</span></h4><h4>Genre: <span>"+arrcode[k].genre+"</span></h4><h4>Director: <span>"+arrcode[k].director+"</span></h4><h4>Writer: <span>"+arrcode[k].writer+"</span></h4><h4>Actors: <span>"+arrcode[k].actors+"</span></h4><h4>Plot: <span>"+arrcode[k].plot+"</span></h4><h4>Language: <span>"+arrcode[k].language+"</span></h4><h4>Country: <span>"+arrcode[k].country+"</span></h4><h4>Awards: <span>"+arrcode[k].awards+"</span></h4><h4>Metascore: <span>"+arrcode[k].metascore+"</span></h4><h4>imdb Rating: <span>"+arrcode[k].imdbRating+"</span></h4><h4>imdb Votes: <span>"+arrcode[k].imdbVotes+"</span></h4><h4>imdb ID: <span>"+arrcode[k].imdbID+"</span></h4><h4>Type: <span>"+arrcode[k].type+"</span></h4><button id='viewMoreClose'>Close</button</div>";
+			}
+			function getInfo(info) {
+					$(".viewContent").empty();
+						 objectArray = info;
+						 for(var i = 0; i < objectArray.length; i++){
+							var HTMLcard = "<div class='card'><img src='"+objectArray[i].poster+"'/><a href='http://www.imdb.com/title/"+objectArray[i].imdbID+"'"+"class='movieName' target='blank'><h1 id='titleMovie'>"+objectArray[i].title+"</h1></a><div><h4>imdbRating: "+objectArray[i].imdbRating+"</h4><h4>Year: "+objectArray[i].year+"</h4><h4>imdbVotes: "+objectArray[i].imdbVotes+"</h4><button class='cardBtn' id='commentBtn'>Comment</button><button class='cardBtn' id='rateBtn'>Rate</button><span class='cardViewBtn'><button class='cardBtn' id='viewMoreBtn' data-movieDetails=''>View More</button><div class='hiddenField'><p>"+htmlcode(objectArray,i)+"</p></div></span></div><p>"+objectArray[i].plot+"</p></div>";						 	
+							// var HTMLcode = '<p>'+objectArray[i].title+'</p>';
+						 	$(".viewContent").append(HTMLcard);
+					} 
+			}
+
+			$(".viewContent").on('click',".cardViewBtn", function(){
+				$(this).find(".hiddenField").fadeIn(1000);
+			});
+			$(".viewContent").on('click','#viewMoreClose', function(){
+				$(this).parent().fadeOut(1000);
+			});
+			 	$.ajax({
+					url: "http://localhost:8080/Movies/getall",
+					contentType: 'application/json',
+					dataType: 'json',
+					success:function (data) {
+						console.log(data);
+						getInfo(data);
+						getAllContent = data;
+					},
+					error: function(e) {
+						console.log(e.message);
+					}
+				});
+
+
+// filter button
+			$('.sortBtn').click(function () {
+				if($(this).data("url") == "AllMoviesTV"){
+						url = 'http://localhost:8080/Movies/getall/'
+					}else if($(this).data("url") == "AllMovies"){
+						url = 'http://localhost:8080/Movies/getall/movie'
+					}
+					else if($(this).data("url") == "AllTV"){
+						url = 'http://localhost:8080/Movies/getall/series'
+					}
+
+				$.ajax({
+					url: url,
+					contentType: 'application/json',
+					dataType: 'json',
+					success:function (data) {
+						getInfo(data);
+					},
+					error: function(e) {
+						console.log(e.message);
+					}
+				});
+			});
+
+			$('#sortBy').change(function () {
+				var sortUrl;
+				if($(this).val() == "year"){
+					sortUrl = 'http://localhost:8080/Movies/getall/sortByYear'
+				}else if ($(this).val() == "imdbRating") {
+					sortUrl = 'http://localhost:8080/Movies/getall/sortByimdbRating'
+				}
+				else if ($(this).val() == "imdbVotes") {
+					sortUrl = 'http://localhost:8080/Movies/getall/sortByimdbVotes'
+				}
+
+
+				$.ajax({
+					url: sortUrl,
+					contentType: 'application/json',
+					dataType: 'json',
+					success:function (data) {
+						getInfo(data);
+					},
+					error: function(e) {
+						console.log(e.message);
+					}
+				});
+		});
+
+			
+
+			//Comment code
+			
+			$(".viewContent").on('click','#commentBtn', function(){
+				$(".overlay").fadeIn(1000);
+			  	positionPopup();
+			});			
+
+			//close popup
+			$("#close").click(function(){
+				$(".overlay").fadeOut(500);
+			});
+
+
+			//position the popup at the center of the page
+			function positionPopup(){
+			  if(!$(".overlay").is(':visible')){
+			    return;
+			  } 
+			  $("#overlay_form").css({
+			      left: ($(window).width() - $('#overlay_form').width()) / 2,
+			      top: ($(window).width() - $('#overlay_form').width()) / 7,
+			      position:'absolute'
+			  });
+			}
+
+			//maintain the popup at center of the page when browser resized
+			$(window).bind('resize',positionPopup);
+
+			var id = currentUserId;
+
+			$('#post').click(function() {
+			 var moviename = $("#movietitle").val();
+			console.log(moviename);
+			var commententered = $("#commentcreated").val();
+			console.log(commententered);
+			var jsonData = JSON.stringify( {
+			      "userId" : id,
+			      "comments" : [ {
+			        "moviename" : moviename,
+			        "comment" : commententered
+			      }]
+			});
+			$.ajax({      
+			             url: "http://localhost:8080/users/",
+			             type: "POST",
+			             dataType: "json",                  
+			             data: jsonData,
+			             contentType: "application/json",
+			             success: function(response){
+			                
+			             },
+			             error: function(err){
+			                var err = JSON.stringify(err);
+			             }
+			        }); 
+		});
+
+
+//Rate Code
+$(".viewContent").on('click','#rateBtn', function(){
+				$(".overlay1").fadeIn(1000);
+			  	positionPopup();
+			});			
+
+			//close popup
+			$("#close1").click(function(){
+				$(".overlay1").fadeOut(500);
+			});
+
+
+			//position the popup at the center of the page
+			function positionPopup(){
+			  if(!$(".overlay1").is(':visible')){
+			    return;
+			  } 
+			  $("#overlay_form1").css({
+			      left: ($(window).width() - $('#overlay_form1').width()) / 2,
+			      top: ($(window).width() - $('#overlay_form1').width()) / 7,
+			      position:'absolute'
+			  });
+			}
+
+			//maintain the popup at center of the page when browser resized
+			$(window).bind('resize',positionPopup);
+
+			var id = currentUserId;
+
+			$('#rate').click(function() {
+			 var moviename = $("#movietitle1").val();
+			console.log(moviename);
+			var Rate = $("#RateEntered").val();
+			console.log(Rate);
+			var jsonData = JSON.stringify( {
+			       "userId" : id,
+     				 "ratings" : [ {
+        				"moviename" : moviename,
+        				"ratings" : Rate
+			      }]
+			});
+			$.ajax({      
+			             url: "http://localhost:8080/userRating",
+			             type: "POST",
+			             dataType: "json",                  
+			             data: jsonData,
+			             contentType: "application/json",
+			             success: function(response){
+			                
+			             },
+			             error: function(err){
+			                console.log(JSON.stringify(err));
+			             }
+			        }); 
+				});
+
+
+			function getComment(arr,com){
+				for(var k = 0; k<arr.length; k++){
+					// return arr[k][com]+arr[k]["comments"];
+					if(arr[k]["comments"] != null){
+					for(var p = 0; p<arr[k]["comments"].length; p++ ){
+							$("#viewComments").append("<p>"+arr[k][com]+JSON.stringify(arr[k]["comments"][p])+"</p>");
+							console.log(arr[k]["comments"][p]);	
+						}
+					}
+				}
+			}
+
+			$('#viewCommentsBtn').click(function(){
+					$.ajax({
+						url: "http://localhost:8080/allComments/",
+						dataType: "json",
+						contentType: "application/json",
+						success: function (data) {
+							// console.log(data);
+							getComment(data,"userId");
+							// $("#viewComments").append(JSON.stringify(data));
+							$(".overlayViewComment").fadeIn(1000);
+						},
+						error: function(err){
+							console.log(err);
+						}
+					});
+				});
+			$('#closeAllComment').click(function(){
+				$(".overlayViewComment").fadeOut(1000);
+			});
+
+			// create code
+			$('#createBtn').click(function(){
+				$(".overlayTable").fadeIn(1000);
+			})
+
+
+			$('#createEntry').click(function() {
+				 var ctitle = $("#ctitle").val();
+
+				var cyear = $("#cyear").val();
+				var crated = $("#crated").val();
+
+				var creleased = $("#creleased").val();
+
+				var cruntime = $("#cruntime").val();
+
+				var cgenre = $("#cgenre").val();
+
+				var cdirectors = $("#cdirectors").val();
+
+				var cactors = $("#cactors").val();
+
+				var cwriters = $("#cwriters").val();
+
+				var cplot = $('#cplot').val();
+			
+				var clanguage = $("#clanguage").val();
+
+				var cposters = $("#cposters").val();
+
+				var ccountry = $("#ccountry").val();
+
+				var cawards = $("#cawards").val();
+
+				var cmetascore = $("#cmetascore").val();
+
+				var cimdbrating = $("#cimdbrating").val();
+
+				var cimdbvoting = $("#cimdbvoting").val();
+
+				var cimdbId = $("#cimdbId").val();
+
+				var ctype = $("#ctype").val();
+
+
+
+				var jsonData = JSON.stringify({
+			        "title": ctitle,
+			        "year": cyear,
+			        "rated": crated,
+			        "released": creleased,
+			        "runtime": cruntime,
+			        "genre": cgenre,
+			        "director": cdirectors,
+			        "writer": cwriters,
+			        "actors": cactors,
+			        "plot": cplot,
+			        "language":clanguage,
+			        "country": ccountry,
+			        "awards": cawards,
+			        "poster": cposters,
+			        "metascore": cmetascore,
+			        "imdbRating": cimdbrating,
+			        "imdbVotes": cimdbvoting,
+			        "imdbID": cimdbId,
+			        "type": ctype,
+			        "comment": null});
+			$.ajax({      
+			            url: "http://localhost:8080/Movies/",
+			             type: "POST",
+			             dataType: "json",                  
+			             data: jsonData,
+			             contentType: "application/json",
+			             success: function(response){
+			                alert(JSON.stringify(response));
+			             },
+			             error: function(err){
+			                alert(JSON.stringify(err));
+			             }
+			        }); 
+			});
+			$("#createClose").click(function(){
+				$(".overlayTable").fadeOut(500);
+			});
+
+
+
+//update
+$("#updateBtn").click(function(){
+  $(".updateForm").fadeIn(1000);
+  	$("#utitle").val('sam');
+  positionPopup();
+});
+
+//close popup
+$("#updateClose").click(function(){
+	$("#overlay_form_update").fadeOut(500);
+});
+
+
+//position the popup at the center of the page
+function positionPopup(){
+  if(!$("#overlay_form_update").is(':visible')){
+    return;
+  } 
+  $("#overlay_form_update").css({
+      left: ($(window).width() - $('#overlay_form_update').width()) / 2,
+      top: ($(window).width() - $('#overlay_form_update').width()) / 7,
+      position:'absolute'
+  });
+}
+
+//maintain the popup at center of the page when browser resized
+$(window).bind('resize',positionPopup);
+
+var id = currentUserId;
+
+$('#updateEntry').click(function() {
+var texturl = $("#uUrl").val(); 
+var utitle = $("#utitle").val();
+var uyear = $("#uyear").val();
+var urated = $("#urated").val();
+var ureleased = $("#ureleased").val();
+var uruntime = $("#uruntime").val();
+var ugenre = $("#ugenre").val();
+var udirectors = $("#udirectors").val();
+var uactors = $("#uactors").val();
+var uwriters = $("#uwriters").val();
+var uplot = $('#uplot').val();
+var ulanguage = $('#ulanguage').val();
+var uposters = $("#uposters").val();
+var ucountry = $("#ucountry").val();
+var uawards = $("#uawards").val();
+var umetascore = $("#umetascore").val();
+var uimdbrating = $("#uimdbrating").val();
+var uimdbvoting = $("#uimdbvoting").val();
+var uimdbId = $("#uimdbId").val();
+var utype = $("#utype").val();
+
+var jsonData = JSON.stringify({
+        "title": utitle,
+        "year": uyear,
+        "rated": urated,
+        "released": ureleased,
+        "runtime": uruntime,
+        "genre": ugenre,
+        "director": udirectors,
+        "writer": uwriters,
+        "actors": uactors,
+        "plot": uplot,
+        "language":ulanguage,
+        "country": ucountry,
+        "awards": uawards,
+        "poster": uposters,
+        "metascore": umetascore,
+        "imdbRating": uimdbrating,
+        "imdbVotes": uimdbvoting,
+        "imdbID": uimdbId,
+        "type": utype,
+        "comment": null});
+console.log(jsonData);
+$.ajax({    
+				url: texturl,
+    			type: "PATCH",
+             dataType: "json",                  
+             data: jsonData,
+             contentType: "application/json",
+             success: function(response){
+                alert(JSON.stringify(response));
+             },
+             error: function(err){
+                //alert(JSON.stringify(err));
+             }
+        }); 
+		
+	});
+	
+	$("#signOut").click(function(){
+		window.location.href="index.html?signout";
+	});
+
+//delete
+$('#deleteBtn').click(function(){
+				$(".overlay_delete").fadeIn(1000);
+			})
+
+
+			$('#deleteEntry').click(function() {
+				 var movieurl = $("#movieurl").val();
+			$.ajax({      
+			            url: movieurl,
+			            type:'DELETE' ,
+						dataType: 'json',
+						success:function (data) {
+						getInfo(data);
+						console.log("success");
+			             },
+			             error: function(err){
+			                console.log(JSON.stringify(err));
+			             }
+			        }); 
+			});
+			$("#deleteclose").click(function(){
+				$(".overlay_delete").fadeOut(500);
+			});
+
+
+
+
+});
+	</script>
+</body>
+</html>	
