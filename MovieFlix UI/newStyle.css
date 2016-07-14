@@ -1,0 +1,360 @@
+/*Header*/
+.header{
+  padding: 10px 0px;
+  background-color: #ccc;
+}
+.header h1{
+  text-align: center;
+}
+/*header-end*/
+/*filter*/
+.filter{
+  text-align: center;
+  padding: 10px 0px;
+  background-color: #3498db;
+}
+.filter button{
+  border:none;
+  background: #2c3e50;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color:white;
+  cursor: pointer;
+}
+.filter button:hover{
+  background-color: white;
+  color:#2c3e50;
+}
+.filter select{
+  padding: 8px 10px;
+  float: right;
+  margin-right: 10px;
+  border-radius: 5px; 
+}
+#createBtn{
+  background-color: #ccc;
+  color:green;
+}
+#createBtn:hover{
+  background-color: green;
+  color:#ccc;
+}
+/*filter end*/
+.card{
+width: 350px;
+border: 1px solid gray;
+box-shadow: 1px 1px 3px #888;
+border-top: 10px solid green;
+min-height: 250px;
+padding-: 10px;
+margin: 10px;
+}
+
+img{
+  border-radius: 50%;
+  width: 70px;
+  margin: 10px;
+}
+
+.card h1{
+  cursor: pointer;
+  background: #ccc;
+  margin-right: 10px;
+  border-radius: 8px;
+  padding: 0px 0px 0px 15px;
+  color: #0366a0;
+  font-weight: lighter;
+  margin-left: 100px;
+  margin-top: -70px;
+}
+.card h1:hover{
+  box-shadow: 0px 0px 2px 5px #d34569;
+}
+h4{
+  padding: 0px 4px;
+  display: inline-block;
+}
+p{
+  margin: 10px;
+  font-family: segoe ui;
+  line-height: 1.4em;
+  font-size: 1em;
+}
+
+.viewContent{
+  font-family: calibri;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+flex-wrap: wrap;
+}
+
+.cardBtn{
+  cursor: pointer;
+    border: 0px;
+    padding: 5px 10px;
+    background: #008000;
+    margin-left: 10px;
+    border-radius: 3px;
+    color: whitesmoke;
+}
+#updateBtn{
+  background-color: #ccc;
+  color:green;
+}
+.cardBtn:hover{
+  background: #ccc;
+  color:#008000;  
+}
+#updateBtn:hover{
+  background: #008000;
+  color:#ccc;  
+
+}
+#deleteBtn{
+  background-color: #ccc;
+  color:green;  
+}
+#deleteBtn:hover{
+  background: #008000;
+  color:#ccc;    
+}
+.movieName{
+  text-decoration: none;
+}
+
+.card label{
+  margin-left: 4%;
+  font-weight: bold;
+}
+
+/*overlay*/
+.overlay {
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.49);
+}
+/*overlay end*/
+#overlay_form{
+  position: absolute;
+  border: 5px solid #008000;
+  padding: 10px;
+  background: white;
+  width: 500px;
+  height: 275px;
+  top:33%;
+  left:33%;
+}
+
+
+/*overlay1*/
+.overlay1 {
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.49);
+}
+
+/*Rating
+overlay end*/
+#overlay_form1{
+  position: absolute;
+  border: 5px solid #008000;
+  padding: 10px;
+  background: white;
+  width: 500px;
+  height: 275px;
+}
+#createForm{
+  border: 5px solid #008000;
+  width: 50%; 
+}
+.overlayTable{
+       position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.49);
+     display: none;
+
+}
+.overlayViewComment{
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.49); 
+}
+#viewComments{
+  position: absolute;
+  border: 5px solid #008000;
+  padding: 10px;
+  background: white;
+  width: 500px;
+    top:33%;
+  left:33%;
+
+}
+table{
+  background-color: white;
+    top:25%;
+  left:25%;
+  position: absolute;
+  
+}
+td{
+  width: 50%;
+  
+}
+tr{
+
+  margin: 0px auto;
+} 
+
+/*update*/
+.updatefield{
+  display: inline-block !important;
+}
+
+#overlay_form_update{
+  position: absolute;
+  border: 5px solid gray;
+  padding: 10px;
+  background: white;
+  width: 500px;
+  height: 275px;
+}
+
+
+/*hiddenField*/
+.hiddenField{
+  display: none;
+    background: #fffafa;
+    position: relative;
+    top: 5%;
+    left: 5%;
+    width:90%;
+}
+.viewMoreDiv img{
+  border-radius: 0px;
+  width:200px;
+}
+.viewMoreDiv h4{
+  display: block;
+  color:#525252;
+  font-weight: bold;
+}
+#viewMoreClose{
+  background-color: green;
+  border:none;
+  border-radius:5px;
+  margin:0px auto;
+  padding: 0px 10px;
+  color:white;
+}
+.viewMoreDiv span{
+  font-weight: normal;
+  color: #f55b1c;
+  font-size: 15px;
+}
+
+/*signout*/
+#signOut{
+  margin:0px 10px;
+  background-color: #3f3f9e;
+  padding: 10px;
+  color:white;
+  border-radius: 5px;
+}
+#signOut:hover{
+  background-color: white;
+  color:#3f3f9e;
+}
+
+#signUp{
+  display: none;
+}
+#login{
+  border: 5px solid;
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+    padding: 10px;
+}
+#login input{
+  margin:10px;
+  width:40%;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
+#login button{
+  background-color: #4183D7;
+  border:none;
+  padding: 5px 10px;
+  border-radius:5px;
+  margin:10px;
+  display: inline-block;
+  color:white;
+}
+
+#signUp{
+  border: 5px solid;
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+    padding: 10px;
+}
+#signUp input{
+  margin:10px;
+  width:40%;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
+#signUp button{
+  background-color: #4183D7;
+  border:none;
+  padding: 5px 10px;
+  border-radius:5px;
+  margin:10px;
+  display: inline-block;
+  color:white;
+}
+
+#overlay_form_delete{
+  position: absolute;
+  border: 5px solid #008000;
+  padding: 10px;
+  background: white;
+  width: 500px;
+  height: 275px;
+  top:33%;
+  left:33%;
+}
+
+
+/*overlay1*/
+.overlay_delete {
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.49);
+}

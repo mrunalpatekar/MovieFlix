@@ -1,0 +1,46 @@
+<html>
+	<head>
+			<link rel="stylesheet" href="newStyle.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+			<script src="myscript.js"></script> 
+
+			<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+			<script>
+			  // Initialize Firebase
+			  var config = {
+			    apiKey: "AIzaSyA-BQtkD77yw_rrfsbGLlWprXk1AulWOjU",
+			    authDomain: "movieflix-login.firebaseapp.com",
+			    databaseURL: "https://movieflix-login.firebaseio.com",
+			    storageBucket: "movieflix-login.appspot.com",
+			  };
+			  firebase.initializeApp(config);
+			</script>
+    
+
+	</head>
+	<body>
+
+		<div id = "login">
+			<h2>Login to MovieFlix</h2>
+			<div><input type = "text" id="email" placeholder = " Email"></div>
+			<div><input type = "password" id="password" placeholder = " Password"></div>
+			<div><button id = "loginBtn" >Login </button><button id = "createAccBtn">Create Account</button> </div>
+
+		</div>
+<div id = "dom_element"></div>
+
+		<div id = "signUp">
+		
+			<h2>Create Your Account</h2>
+			<div><input type = "text" id="Username" placeholder = " UserName"></div>
+			<div><input type = "text" id="Signemail" placeholder = " Email"></div>
+			<div><input type = "password" id="signpass" placeholder = " Password"></div>
+			<div><input type = "password" id="signpass" placeholder = " Confirm Password"></div>
+			<div><button id = "signUpBtn">Sign Up</button><button id = "goBackLogin" >Go Back to Login </button> </div>
+
+
+		</div> 
+
+	</body>
+
+</html>
